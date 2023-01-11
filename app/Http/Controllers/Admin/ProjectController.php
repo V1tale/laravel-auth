@@ -7,7 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 
-class PostController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
