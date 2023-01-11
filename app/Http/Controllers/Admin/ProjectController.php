@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Project::all();
+        $projects = Project::all();
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -47,7 +47,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $post)
+    public function show(Project $projects)
     {
         return view('admin.projects.show', compact('projects'));
     }
