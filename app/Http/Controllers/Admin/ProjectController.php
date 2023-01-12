@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -38,18 +39,20 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        $formData = $request->validated();
-        $formData['slug'] = Project::generateSlug($formData['title']);
-        $project = new Project();
-        $project->fill($formData);
-        $project->save();
-        return redirect()->route('admin.projects.index')->with('message', 'Creato nuovo progetto');
+        $form_data = $request->validated();
+        $newProject = new Project();
+        $newProject->title = $form_data['title'];
+        $newProject->content = $form_data['content'];
+        $newProject->slug = Str::slug($form_data['title']);
+        $newProject->save();
+
+        return redirect()->route('admin.projects.show', $newProject->slug);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function show(Project $project)
@@ -60,7 +63,7 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Project  $post
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function edit(Project $project)
@@ -82,7 +85,7 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $post
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function destroy(Project $project)
