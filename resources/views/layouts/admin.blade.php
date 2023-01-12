@@ -69,7 +69,7 @@
                                 <a class="nav-link text-white"
                                     {{ Route::currentRouteName() == 'admin.projects.create' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.projects.create') }}">
-                                    + Nuovo Progetto
+                                    <i class="fa-solid fa-square-plus"></i> Nuovo Progetto
                                 </a>
                             </li>
 

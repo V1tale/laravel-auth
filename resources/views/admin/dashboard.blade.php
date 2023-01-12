@@ -13,7 +13,7 @@
                             </div>
                         @endif
 
-                        {{ __('Loggato') }}
+                        <h4>'Ciao {{ Auth::user()->name }}, sei stato Loggato'</h4>
                     </div>
                 </div>
             </div>
