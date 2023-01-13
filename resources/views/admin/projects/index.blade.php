@@ -24,15 +24,26 @@
                     <tbody>
                         @foreach ($projects as $project)
                             <tr>
-                                <th scope="row">{{ $project->title }}</th>
+                                <td scope="row">{{ $project->title }}</td>
+                                <td>
+                                    @if ($project->image)
+                                        <img class="w-50" src="{{ asset('storage/' . $project->image) }}" alt="">
+                                    @else
+                                        <div class="w-50 bg-secondary py-4 text-center">
+                                            No image yet
+                                        </div>
+                                    @endif
+                                </td>
                                 <td>{{ $project->created_at }}</td>
                                 <td>
-                                    <a class="btn btn-light" href="{{ route('admin.projects.show', $project->slug) }}">
+                                    <a class="btn btn-outline-dark"
+                                        href="{{ route('admin.projects.show', $project->slug) }}">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-light" href="{{ route('admin.projects.edit', $project->slug) }}">
+                                    <a class="btn btn-outline-dark"
+                                        href="{{ route('admin.projects.edit', $project->slug) }}">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                 </td>
@@ -41,7 +52,7 @@
                                         class="d-inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-light" type="submit">
+                                        <button class="btn btn-outline-dark" type="submit">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>

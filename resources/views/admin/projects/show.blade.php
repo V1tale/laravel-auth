@@ -11,6 +11,15 @@
             </a>
         </div>
         <h2 class="text-center">{{ $project->title }}</h2>
+        <div class="text-center">
+            @if ($project->image)
+                <img src="{{ asset('storage/' . $project->image) }}" alt="{{ 'immagine di ' . $project->image }}">
+            @else
+                <div class="w-50 bg-secondary py-4 text-center d-inline-block">
+                    No image yet
+                </div>
+            @endif
+        </div>
         <p class="mt-3">{{ $project->content }}</p>
     </div>
 @endsection
