@@ -34,8 +34,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div class="navbar-nav">
-                <div class="nav-item text-nowrap ms-2">
+            <div class="navbar-nav d-flex">
+
+                <div class="nav-item text-nowrap ms-2 d-flex">
                     <a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
